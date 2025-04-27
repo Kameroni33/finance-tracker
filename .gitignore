@@ -1,0 +1,12 @@
+# IDE Files
+.idea
+
+# Python Virtual Evironment
+venv
+
+# Database files
+*.db
+
+# Docker files
+server/server
+server/models

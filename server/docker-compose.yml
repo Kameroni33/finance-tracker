@@ -1,0 +1,13 @@
+services:
+  finance-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: finance-server
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./server:/app"
+    environment:
+      - DATABASE="finance.db"
+    restart: unless-stopped
