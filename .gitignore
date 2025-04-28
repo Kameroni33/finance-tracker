@@ -9,4 +9,3 @@ venv
 
 # Docker files
 server/server
-server/models

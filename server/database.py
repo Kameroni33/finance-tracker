@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from contextlib import contextmanager
-from models import transaction
+from models import Account, Category, Transaction
 
 DATABASE = os.getenv("DATABASE", default="finance.db")
 SCHEMA = "schema.sql"
@@ -23,12 +23,11 @@ def initialize_database():
         connection.executescript(sql_script)
 
 
-class Transaction(transaction.Transaction):
-    def send_to_database(self):
-        with get_database_connection() as connection:
-            cursor = connection.cursor()
-            cursor.execute(
-                "INSERT INTO transactions (date, description, amount) VALUES (?, ?, ?)",
-                (self.date, self.description, self.amount),
-            )
-            connection.commit()
+def transaction_insert(self):
+    with get_database_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(
+            "INSERT INTO transactions (date, description, amount) VALUES (?, ?, ?)",
+            (self.date, self.description, self.amount),
+        )
+        connection.commit()
